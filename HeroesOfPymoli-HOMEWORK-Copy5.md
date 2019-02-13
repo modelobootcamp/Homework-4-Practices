@@ -320,7 +320,7 @@ ResultBySex1
 ```
 
 
-      File "<ipython-input-23-5936ecb4b733>", line 46
+      File "<ipython-input-32-5936ecb4b733>", line 46
         ResultBySex1= pd.DataFrame(ResultBySex)
                     ^
     SyntaxError: invalid syntax
@@ -343,12 +343,18 @@ MaxAge = data['Age'].max()
 print(MaxAge)
 ```
 
+    45
+    
+
 
 ```python
 #Age Demographics
 MinAge = data['Age'].min()
 print(MinAge)
 ```
+
+    7
+    
 
 * Categorize the existing players using the age bins. Hint: use pd.cut()
 
@@ -363,10 +369,22 @@ data['Age Summary'] = pd.cut(data['Age'],bins,labels= Agelabels)
 print(bins)
 ```
 
+    [0, 10, 14, 19, 24, 29, 34, 39, 46]
+    
+
 
 ```python
 data.columns
 ```
+
+
+
+
+    Index(['Purchase ID', 'SN', 'Age', 'Gender', 'Item ID', 'Item Name', 'Price',
+           'Age Summary'],
+          dtype='object')
+
+
 
 
 ```python
@@ -434,6 +452,9 @@ PercentBins= [round(x,2) for x in PercentBins]
 print(PlayerBinsCount)
 ```
 
+    [24, 15, 107, 258, 77, 52, 31, 12]
+    
+
 
 ```python
 AgeDem = {"Age Summary":Agelabels,"Total Player Count":PlayerBinsCount,"Percentage Of Players":PercentBins}
@@ -441,6 +462,83 @@ AgeDem1 = pd.DataFrame(AgeDem)
 AgeDem1 = AgeDem1.set_index('Age Summary')
 AgeDem1
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Player Count</th>
+      <th>Percentage Of Players</th>
+    </tr>
+    <tr>
+      <th>Age Summary</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;10</th>
+      <td>24</td>
+      <td>4.17</td>
+    </tr>
+    <tr>
+      <th>10-14</th>
+      <td>15</td>
+      <td>2.60</td>
+    </tr>
+    <tr>
+      <th>15-19</th>
+      <td>107</td>
+      <td>18.58</td>
+    </tr>
+    <tr>
+      <th>20-24</th>
+      <td>258</td>
+      <td>44.79</td>
+    </tr>
+    <tr>
+      <th>25-29</th>
+      <td>77</td>
+      <td>13.37</td>
+    </tr>
+    <tr>
+      <th>30-34</th>
+      <td>52</td>
+      <td>9.03</td>
+    </tr>
+    <tr>
+      <th>35-39</th>
+      <td>31</td>
+      <td>5.38</td>
+    </tr>
+    <tr>
+      <th>40+</th>
+      <td>12</td>
+      <td>2.08</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 ## Purchasing Analysis (Age)
 
@@ -511,12 +609,98 @@ data.columns
 ```
 
 
+
+
+    Index(['Purchase ID', 'SN', 'Age', 'Gender', 'Item ID', 'Item Name', 'Price',
+           'Age Summary'],
+          dtype='object')
+
+
+
+
 ```python
 AgeDem = {"Age Summary":Agelabels,"Total Player Count":PlayerBinsCount,"Percentage Of Players":PercentBins}
 AgeDem1 = pd.DataFrame(AgeDem)
 AgeDem1 = AgeDem1.set_index('Age Summary')
 AgeDem1
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Player Count</th>
+      <th>Percentage Of Players</th>
+    </tr>
+    <tr>
+      <th>Age Summary</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;10</th>
+      <td>24</td>
+      <td>4.17</td>
+    </tr>
+    <tr>
+      <th>10-14</th>
+      <td>15</td>
+      <td>2.60</td>
+    </tr>
+    <tr>
+      <th>15-19</th>
+      <td>107</td>
+      <td>18.58</td>
+    </tr>
+    <tr>
+      <th>20-24</th>
+      <td>258</td>
+      <td>44.79</td>
+    </tr>
+    <tr>
+      <th>25-29</th>
+      <td>77</td>
+      <td>13.37</td>
+    </tr>
+    <tr>
+      <th>30-34</th>
+      <td>52</td>
+      <td>9.03</td>
+    </tr>
+    <tr>
+      <th>35-39</th>
+      <td>31</td>
+      <td>5.38</td>
+    </tr>
+    <tr>
+      <th>40+</th>
+      <td>12</td>
+      <td>2.08</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -562,6 +746,75 @@ TopSpend1 = TopSpend1[['Purchase Count', 'Average Purchase Price', 'Total Purcha
 TopSpend1.iloc[:5]
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>SN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>[Lisosia93]</th>
+      <td>5</td>
+      <td>3.79</td>
+      <td>18.96</td>
+    </tr>
+    <tr>
+      <th>[Idastidru52]</th>
+      <td>4</td>
+      <td>3.86</td>
+      <td>15.45</td>
+    </tr>
+    <tr>
+      <th>[Chamjask73]</th>
+      <td>3</td>
+      <td>4.61</td>
+      <td>13.83</td>
+    </tr>
+    <tr>
+      <th>[Iral74]</th>
+      <td>4</td>
+      <td>3.40</td>
+      <td>13.62</td>
+    </tr>
+    <tr>
+      <th>[Iskadarya95]</th>
+      <td>3</td>
+      <td>4.37</td>
+      <td>13.10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ## Most Popular Items
 
 * Retrieve the Item ID, Item Name, and Item Price columns
@@ -603,6 +856,82 @@ ItemTable1 = ItemTable1[['Item Name','Item Count','Item Price','Total Purchase']
 ItemTable1.iloc[:5]
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Item Name</th>
+      <th>Item Count</th>
+      <th>Item Price</th>
+      <th>Total Purchase</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>[178]</th>
+      <td>[Oathbreaker, Last Hope of the Breaking Storm]</td>
+      <td>12</td>
+      <td>[4.23]</td>
+      <td>50.76</td>
+    </tr>
+    <tr>
+      <th>[145]</th>
+      <td>[Fiery Glass Crusader]</td>
+      <td>9</td>
+      <td>[4.58]</td>
+      <td>41.22</td>
+    </tr>
+    <tr>
+      <th>[108]</th>
+      <td>[Extraction, Quickblade Of Trembling Hands]</td>
+      <td>9</td>
+      <td>[3.53]</td>
+      <td>31.77</td>
+    </tr>
+    <tr>
+      <th>[82]</th>
+      <td>[Nirvana]</td>
+      <td>9</td>
+      <td>[4.9]</td>
+      <td>44.10</td>
+    </tr>
+    <tr>
+      <th>[19]</th>
+      <td>[Pursuit, Cudgel of Necromancy]</td>
+      <td>8</td>
+      <td>[1.02]</td>
+      <td>8.16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ## Most Profitable Items
 
 * Sort the above table by total purchase value in descending order
@@ -614,6 +943,82 @@ ItemTable1.iloc[:5]
 MostProfit= ItemTable1.sort_values('Total Purchase', ascending=False)
 MostProfit[:5]
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Item Name</th>
+      <th>Item Count</th>
+      <th>Item Price</th>
+      <th>Total Purchase</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>[178]</th>
+      <td>[Oathbreaker, Last Hope of the Breaking Storm]</td>
+      <td>12</td>
+      <td>[4.23]</td>
+      <td>50.76</td>
+    </tr>
+    <tr>
+      <th>[82]</th>
+      <td>[Nirvana]</td>
+      <td>9</td>
+      <td>[4.9]</td>
+      <td>44.10</td>
+    </tr>
+    <tr>
+      <th>[145]</th>
+      <td>[Fiery Glass Crusader]</td>
+      <td>9</td>
+      <td>[4.58]</td>
+      <td>41.22</td>
+    </tr>
+    <tr>
+      <th>[92]</th>
+      <td>[Final Critic]</td>
+      <td>8</td>
+      <td>[4.88]</td>
+      <td>39.04</td>
+    </tr>
+    <tr>
+      <th>[103]</th>
+      <td>[Singed Scalpel]</td>
+      <td>8</td>
+      <td>[4.35]</td>
+      <td>34.80</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
